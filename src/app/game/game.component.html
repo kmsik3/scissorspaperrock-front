@@ -1,0 +1,55 @@
+<div class="container mt-5">
+    <div class="card text-center" style="color: pink; padding: 20px;">
+        <h4>RadioButtons in Template Driven Forms</h4>
+        <form #handPickForm="ngForm" (ngSubmit)="pickHand(handPickForm)">
+            <ng-container *ngFor="let hand of hands; let i = index">
+                <input type="radio" name="hand" [value]="hand" [(ngModel)]="selected" />
+                {{ hand }}
+            </ng-container>
+            <input type="submit"
+            value="PickHand"
+            class="btn btn-outline-primary form-control rounded-0"
+            >
+        </form>
+        <b>I have selected:</b> {{ handPickForm.value | json }}
+    </div>
+    <div class="container mt-5" >
+    </div>
+    <div class="card">
+        <div class="row">
+            <div class="col-sm" style="padding: 20px; margin-left: 10px;"> Computer pick: 
+                <h1>{{ computerPick }}</h1>
+            </div>
+            <div class="col-sm" style="padding: 20px; margin-left: 10px;"> Game Result:  
+                <h1>{{ gameResult }}</h1>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-5" >
+    </div>
+    <div class="container mt-5" >
+        <button class="btn btn-success" (click)="getWinRate()">Check your Win Rate</button>
+    </div>
+    <div class="card">
+        <div class="row">
+            <div class="col-sm" style="padding: 20px; margin-left: 10px;"> Total number of Games played: 
+                <h1>{{ countGame }}</h1>
+            </div>
+            <div class="col-sm" style="padding: 20px; margin-left: 10px;"> Win count:  
+                <h1>{{ countWin }}</h1>
+            </div>
+            <div class="col-sm" style="padding: 20px; margin-left: 10px;"> Loss count: 
+                <h1>{{ countLoss }}</h1>
+            </div>
+            <div class="col-sm" style="padding: 20px; margin-left: 10px;"> Draw count: 
+                <h1>{{ countDraw }}</h1>
+            </div>
+            <div class="col-sm" style="padding: 20px; margin-left: 10px;"> Win Rate: 
+                <h1>{{ winRate }}%</h1>
+            </div>
+        </div>
+    </div>
+    <div class="alert alert-warning" *ngIf="isGameRecordExsited">
+        There is no Game history! please try game first! <br /> {{ errorMessage }}
+    </div>
+</div>

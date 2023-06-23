@@ -1,0 +1,41 @@
+<div class="container mt-5">
+    <div class="card text-center" style="color: pink; padding: 20px;">
+        <form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
+            <input type="text"
+            ngModel
+            name="email"
+            id="email"
+            placeholder="Enter your email"
+            class="form-control mb-3"
+            >
+            <input type="text"
+            ngModel
+            name="firstName"
+            id="firstName"
+            placeholder="Enter your firstName"
+            class="form-control mb-3"
+            >
+            <input type="text"
+            ngModel
+            name="lastName"
+            id="lastName"
+            placeholder="Enter your lastName"
+            class="form-control mb-3"
+            >
+            <input type="password"
+            ngModel
+            name="password"
+            id="password"
+            placeholder="Enter your password"
+            class="form-control mb-3"
+            >
+            <input type="submit"
+            value="Register"
+            class="btn btn-outline-primary form-control rounded-0"
+            >
+        </form>
+        <div class="alert alert-warning" *ngIf="registerForm.submitted && isSignUpFailed">
+            Signup failed! <br /> {{ errorMessage }}
+        </div>
+    </div>
+</div>
