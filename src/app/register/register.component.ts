@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../_services/user.service';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserAuthService } from '../_services/user-auth.service';
-import { NgForm } from '@angular/forms';
+import { UserService } from '../_services/user.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit{
+export class RegisterComponent implements OnInit {
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit{
         this.userAuthService.setAccessToken(response.accessToken);
         this.userAuthService.setRefreshToken(response.refreshToken);
 
-        if(response.accessToken && response.refreshToken && response.userRole) {
+        if (response.accessToken && response.refreshToken && response.userRole) {
           this.router.navigate(['/game'])
         }
       },
@@ -38,7 +38,7 @@ export class RegisterComponent implements OnInit{
         this.isSignUpFailed = true;
       }
     );
-    
+
   }
 
 }

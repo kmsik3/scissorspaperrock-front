@@ -1,9 +1,9 @@
-import { HttpErrorResponse, HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest } from "@angular/common/http";
+import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
+import { Injectable } from '@angular/core';
+import { Router } from "@angular/router";
 import { Observable, throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
 import { UserAuthService } from "../_services/user-auth.service";
-import { Router } from "@angular/router";
-import {Injectable} from '@angular/core'
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -32,7 +32,7 @@ export class AuthInterceptor implements HttpInterceptor {
                         return throwError(() => err.error.message);
                     }
                     console.log("Something goes wrong");
-                    
+
                     return throwError(() => new Error("Some thing is wrong"));
                 }
             )

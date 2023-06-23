@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserAuthService } from '../_services/user-auth.service';
 import { Router } from '@angular/router';
+import { UserAuthService } from '../_services/user-auth.service';
 import { UserService } from '../_services/user.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { UserService } from '../_services/user.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit{
+export class HeaderComponent implements OnInit {
 
   constructor(private userAuthService: UserAuthService, private router: Router, public userService: UserService) {
 

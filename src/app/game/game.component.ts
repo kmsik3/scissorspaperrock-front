@@ -1,38 +1,38 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
-import { UserService } from '../_services/user.service';
-import { UserAuthService } from '../_services/user-auth.service';
-import { GameService } from '../_services/game.service';
-import { GameRecordService } from '../_services/game-record.service';
+import { FormGroup, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { GameRecordService } from '../_services/game-record.service';
+import { GameService } from '../_services/game.service';
+import { UserAuthService } from '../_services/user-auth.service';
+import { UserService } from '../_services/user.service';
 
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.css']
 })
-export class GameComponent implements OnInit{
+export class GameComponent implements OnInit {
   public radioButtonReactiveForm: FormGroup | undefined;
   selected: string = 'SCISSORS';
   public hands: any = ['SCISSORS', 'PAPER', 'ROCK'];
-  computerPick: string ="";
+  computerPick: string = "";
   gameResult: string = "";
   countGame: number = 0;
   countWin: number = 0;
   countLoss: number = 0;
   countDraw: number = 0;
-  winRate: string ="";
+  winRate: string = "";
 
   isSuccessful = false;
   isGameRecordExsited = false;
   errorMessage: string | null = '';
 
 
-  constructor(private userService: UserService, private userAuthService: UserAuthService, private gameRecordService: GameRecordService, 
-    private gameService: GameService, private router: Router) {}
-  
+  constructor(private userService: UserService, private userAuthService: UserAuthService, private gameRecordService: GameRecordService,
+    private gameService: GameService, private router: Router) { }
+
   ngOnInit(): void {
-    
+
   }
 
   pickHand(handPickForm: NgForm) {
@@ -46,12 +46,12 @@ export class GameComponent implements OnInit{
         this.gameRecordService.setComputerPick(response.result);
         this.computerPick = response.computerPick;
         this.gameResult = response.result;
-        
-        if(response.computerPick && response.result) {
+
+        if (response.computerPick && response.result) {
           this.router.navigate(['/game'])
         }
-        
-        
+
+
       },
       (error) => {
         console.log(error);
@@ -75,10 +75,10 @@ export class GameComponent implements OnInit{
         this.countLoss = response.countLoss;
         this.countDraw = response.countDraw;
         this.winRate = response.winRate;
-        if(response.countGame && response.winRate) {
+        if (response.countGame && response.winRate) {
           this.isGameRecordExsited = false;
         }
-        
+
       },
       (error) => {
         console.log(error);

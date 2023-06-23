@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { CanActivateFn, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
+import { ActivatedRouteSnapshot, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
-import { UserService } from '../_services/user.service';
 import { UserAuthService } from '../_services/user-auth.service';
+import { UserService } from '../_services/user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,20 +18,20 @@ export class AuthGuard {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-      if(this.userAuthservice.getAccessToken() != null) {
-        const role = route.data["roles"] as [string];
-        if(role) {
-          const match = this.userService.roleMatch(role);
-          if(match){
-            return true;
-          }
-          else {
-            this.router.navigate(['/forbidden']);
-            return false;
-          }
+    if (this.userAuthservice.getAccessToken() != null) {
+      const role = route.data["roles"] as [string];
+      if (role) {
+        const match = this.userService.roleMatch(role);
+        if (match) {
+          return true;
+        }
+        else {
+          this.router.navigate(['/forbidden']);
+          return false;
         }
       }
-      this.router.navigate(['/login']);
-      return false;
-    }    
+    }
+    this.router.navigate(['/login']);
+    return false;
+  }
 }

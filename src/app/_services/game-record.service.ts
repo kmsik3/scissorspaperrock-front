@@ -16,7 +16,7 @@ export class GameRecordService {
   }
 
   public setGameResult(result: string) {
-    localStorage.setItem('result: ', result );
+    localStorage.setItem('result: ', result);
   }
 
   public getGameResult() {
