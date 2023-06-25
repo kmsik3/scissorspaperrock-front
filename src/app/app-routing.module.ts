@@ -7,12 +7,10 @@ import { GameComponent } from './game/game.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { UserComponent } from './user/user.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], data: { roles: ['ADMIN'] } },
-  { path: 'user', component: UserComponent, canActivate: [AuthGuard], data: { roles: ['USER'] } },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'forbidden', component: ForbiddenComponent },

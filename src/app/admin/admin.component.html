@@ -1,5 +1,35 @@
 <div class="container mt-5">
-    <div class="card text-center" style="color: green; padding: 20px;">
-        <h1>This is Admin Page</h1>
+    <div class="card text-center" style="color: rgb(41, 89, 161); padding: 20px;">
+        <h1>Admin can have advantage</h1>
+        <form #advantageForm="ngForm" (ngSubmit)="advantage(advantageForm)">
+            <input type="number"
+            inputmode="numeric"
+            ngModel
+            name="desiredWinPercentage"
+            id="desiredWinPercentage"
+            placeholder="Please type what percentage you want to win (0~100)"
+            class="form-control mb-3"
+            >
+            <input type="checkbox"
+            ngModel
+            name="useAdvantage"
+            id ="useAdvantage"
+            > Use Admin role advantage!
+            <input type="submit"
+            value="Apply"
+            class="btn btn-outline-primary form-control rounded-0"
+            >
+        </form>
+        <div class="container mt-5">
+            <div class="card">
+                <h2>Current win percentage & Using Admin advantage</h2>
+                <div class="col-sm" style="padding: 20px; margin-left: 10px;"> Applied desired win percentage: 
+                    <h1>{{ winPercentage }}%</h1>
+                </div>
+                <div class="col-sm" style="padding: 20px; margin-left: 10px;"> The advantage is applied:  
+                    <h1>{{ useAdavantage }}</h1>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

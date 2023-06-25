@@ -62,4 +62,20 @@ export class GameRecordService {
   public getWinRate() {
     return localStorage.getItem('winRate');
   }
+
+  public setDesiredWinPercentage(percentage: number) {
+    localStorage.setItem('desiredWinPercentage', percentage.toString())
+  }
+
+  public getDesiredWinPercentage() {
+    return localStorage.getItem('desiredWinPercentage');
+  }
+
+  public setUseAdminAdvantage(useAdvantage: boolean) {
+    localStorage.setItem('useAdminAdvantage', useAdvantage.toString())
+  }
+
+  public getUseAdminAdvantage() {
+    return localStorage.getItem('useAdminAdvantage');
+  }
 }

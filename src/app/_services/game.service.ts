@@ -11,10 +11,13 @@ export class GameService {
 
   constructor(private httpClient: HttpClient, private userAuthService: UserAuthService) { }
 
-  public startGame(pickedHand: any, playerId: any) {
+  public startGame(pickedHand: any, playerId: any, userRole: any, desiredWinPercentage: any ,useAdminAdvantage: any) {
     var requestBody = {
       "playerId": playerId,
-      "playerPick": pickedHand
+      "playerPick": pickedHand,
+      "role": userRole,
+      "desiredWinPercentage": desiredWinPercentage,
+      "useAdminAdvantage": useAdminAdvantage
     };
 
     return this.httpClient.post(this.PATH_OF_API + "/api/v1/game/start", requestBody);

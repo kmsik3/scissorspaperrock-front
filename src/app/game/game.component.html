@@ -1,6 +1,6 @@
 <div class="container mt-5">
     <div class="card text-center" style="color: pink; padding: 20px;">
-        <h4>RadioButtons in Template Driven Forms</h4>
+        <h4>Player pick! with what you can win!</h4>
         <form #handPickForm="ngForm" (ngSubmit)="pickHand(handPickForm)">
             <ng-container *ngFor="let hand of hands; let i = index">
                 <input type="radio" name="hand" [value]="hand" [(ngModel)]="selected" />

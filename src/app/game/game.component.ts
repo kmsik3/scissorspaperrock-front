@@ -13,7 +13,7 @@ import { UserService } from '../_services/user.service';
 })
 export class GameComponent implements OnInit {
   public radioButtonReactiveForm: FormGroup | undefined;
-  selected: string = 'SCISSORS';
+  public selected: string = 'SCISSORS';
   public hands: any = ['SCISSORS', 'PAPER', 'ROCK'];
   computerPick: string = "";
   gameResult: string = "";
@@ -38,8 +38,11 @@ export class GameComponent implements OnInit {
   pickHand(handPickForm: NgForm) {
     let playerPick = handPickForm.value['hand'];
     let playerId = this.userAuthService.getEmail();
+    let userRole = this.userAuthService.getUserRole();
+    let desiredWinPercentage = this.gameRecordService.getDesiredWinPercentage() ? this.gameRecordService.getDesiredWinPercentage() : 0 ;
+    let useAdminAdvantage = this.gameRecordService.getUseAdminAdvantage();
 
-    this.gameService.startGame(playerPick, playerId).subscribe(
+    this.gameService.startGame(playerPick, playerId, userRole, desiredWinPercentage, useAdminAdvantage).subscribe(
       (response: any) => {
         console.log(response);
         this.gameRecordService.setComputerPick(response.computerPick);
@@ -55,10 +58,10 @@ export class GameComponent implements OnInit {
       },
       (error) => {
         console.log(error);
-        location.reload();
-      }
-    );
-  }
+        this.errorMessage = error.error.message;
+        }
+      );
+    }
 
   getWinRate() {
     this.gameService.getWinRate().subscribe(
