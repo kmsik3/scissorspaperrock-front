@@ -25,6 +25,9 @@
             </div>
         </div>
     </div>
+    <div class="alert alert-warning" *ngIf="handPickForm.submitted && isInternalServerError">
+        Error! <br /> {{ errorMessage }}
+    </div>
     <div class="container mt-5" >
     </div>
     <div class="container mt-5" >

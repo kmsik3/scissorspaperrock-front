@@ -26,6 +26,7 @@ export class GameComponent implements OnInit {
   isSuccessful = false;
   isGameRecordExsited = false;
   errorMessage: string | null = '';
+  isInternalServerError = false;
 
 
   constructor(private userService: UserService, private userAuthService: UserAuthService, private gameRecordService: GameRecordService,
@@ -58,7 +59,10 @@ export class GameComponent implements OnInit {
       },
       (error) => {
         console.log(error);
-        this.errorMessage = error.error.message;
+        this.errorMessage = error.message;
+        if (error === "Internal server error") {
+          this.isInternalServerError = true;
+        }
         }
       );
     }
