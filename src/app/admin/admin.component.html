@@ -4,6 +4,8 @@
         <form #advantageForm="ngForm" (ngSubmit)="advantage(advantageForm)">
             <input type="number"
             inputmode="numeric"
+            min=0
+            max=100
             ngModel
             name="desiredWinPercentage"
             id="desiredWinPercentage"
