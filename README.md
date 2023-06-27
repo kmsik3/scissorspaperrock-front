@@ -1,6 +1,4 @@
-# SPRFrontend
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.0.
+# Scissors Paper Rock Game (Front-End)
 
 ## Development server
 
@@ -25,3 +23,21 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Functions (Player)
+* Signup
+* Login
+* Logout
+
+## Functions (Game)
+* Play
+* Calculate win rate (total game count, total win count, total loss count, total draw count)
+* Set winning percentage (only for admin account)
+
+## How to use Admin advantage in Admin Dashboard menu
+
+This advantage is able to set winning percentage of user.
+On Admin Dashboard page, there are text box that you can type the percentage (0 ~ 100 only Integer) and check box that decide you want to use this percentage.
+So, firstly type the percentage and tick the check box and click Apply button, then you can see what percentage you apply for and whether you are using the advantage or not below the button.
+After you do this, please go to Game Play menu and play it, then the percentage will be applied.
+If you don't want to use the advantage anymore after you apply it, you can simply come back to Admin Dashboard menu and click apply button without ticking the check box. Then you can see that you are not using it below the button.
